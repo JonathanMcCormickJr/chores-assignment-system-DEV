@@ -1,0 +1,21 @@
+<!-- base.html -->
+
+<html>
+  <head>
+    <title>My Flask App</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+          <li><a href="{{ url_for('analytics') }}">Analytics</a></li>
+          <li><a href="{{ url_for('survey') }}">Take the Survey</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+  </body>
+</html>
