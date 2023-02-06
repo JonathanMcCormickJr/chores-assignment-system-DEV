@@ -61,6 +61,17 @@ dev = ["pytest", "cogapp", "pre-commit", "wheel"]
 tests = ["pytest"]
 
 [[package]]
+name = "astral"
+version = "3.2"
+description = "Calculations for the position of the sun and moon."
+category = "main"
+optional = false
+python-versions = ">=3.7,<4.0"
+
+[package.dependencies]
+tzdata = {version = "*", markers = "sys_platform == \"win32\""}
+
+[[package]]
 name = "async-timeout"
 version = "4.0.2"
 description = "Timeout context manager for asyncio programs"
@@ -382,7 +393,7 @@ test = ["pylint", "pycodestyle", "pyflakes", "pytest", "pytest-cov", "coverage"]
 
 [[package]]
 name = "pytoolconfig"
-version = "1.2.4"
+version = "1.2.5"
 description = "Python tool configuration"
 category = "dev"
 optional = false
@@ -395,7 +406,7 @@ tomli = {version = ">=2.0.1", markers = "python_version < \"3.11\""}
 
 [package.extras]
 doc = ["tabulate (>=0.8.9)", "sphinx (>=4.5.0)"]
-gen_docs = ["sphinx (>=4.5.0)", "sphinx-autodoc-typehints (>=1.18.1)", "sphinx-rtd-theme (>=1.0.0)", "pytoolconfig"]
+gendocs = ["sphinx (>=4.5.0)", "sphinx-autodoc-typehints (>=1.18.1)", "sphinx-rtd-theme (>=1.0.0)", "pytoolconfig"]
 global = ["platformdirs (>=1.4.4)"]
 validation = ["pydantic (>=1.7.4)"]
 
@@ -507,6 +518,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "tzdata"
+version = "2022.7"
+description = "Provider of IANA time zone data"
+category = "main"
+optional = false
+python-versions = ">=2"
+
+[[package]]
 name = "ujson"
 version = "5.7.0"
 description = "Ultra fast JSON encoder and decoder for Python"
@@ -572,13 +591,14 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10.0,<3.11"
-content-hash = "b8c52bc276da744c44fb104c65b4d40a874b5f9ccc4d8a4ce301a52b3fbfef9c"
+content-hash = "fbcbbb745d121dbfc38e61d9b1bfd7caec26c02949b60bfb9cadd16175109249"
 
 [metadata.files]
 aiohttp = []
 aiosignal = []
 argon2-cffi = []
 argon2-cffi-bindings = []
+astral = []
 async-timeout = []
 attrs = []
 certifi = []
@@ -616,6 +636,7 @@ rope = []
 toml = []
 tomli = []
 typing-extensions = []
+tzdata = []
 ujson = []
 urllib3 = []
 werkzeug = []

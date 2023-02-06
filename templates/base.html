@@ -11,22 +11,18 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 
-    <!-- Light Mode CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/light.css') }}" id="light-mode-css">
     
-    <!-- Dark Mode CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark.css') }}" id="dark-mode-css" disabled>
+    
+    
 
-    <!-- Enact any prior dark/light mode selection -->
-    <script>
-        window.onload = function() {
-          var darkMode = localStorage.getItem("darkMode");
-          if (darkMode === "true") {
-            document.body.classList.add("dark-mode");
-          }
-        };
-        
-    </script>
+    <!-- Dark/Ligh mode auto-assign -->
+  {% if mode == 'dark' %}
+    <!-- Use Dark Mode CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark.css') }}" id="dark-mode-css">
+  {% else %}
+    <!-- Use Light Mode CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/light.css') }}" id="light-mode-css">
+  {% endif %}
 
     <title>{% block title %}{% endblock %}</title>
   </head>
@@ -45,9 +41,6 @@
           <a class="nav-item nav-link" href="{{ url_for('analytics') }}">Analytics</a>
           <a class="nav-item nav-link" href="{{ url_for('survey') }}">Survey</a>
         </div>
-          <div>
-              <button id="toggle-dark-mode">Toggle Dark Mode</button>
-          </div>
       </div>
     </nav>
 
@@ -89,7 +82,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
     <!-- JavaScript for Dark Mode toggle -->
-    <script>
+<!--    <script>
       const lightModeCss = document.getElementById("light-mode-css");
       const darkModeCss = document.getElementById("dark-mode-css");
       const toggleBtn = document.getElementById("toggle-dark-mode");
@@ -103,45 +96,8 @@
           darkModeCss.disabled = false;
         }
       });
-
-        // Setting the dark mode preference
-        localStorage.setItem("darkMode", "true");
-        
-        // Retrieving the dark mode preference
-        var darkMode = localStorage.getItem("darkMode");
-        
     </script>
-
-    <script>
-      document.getElementById("toggle-dark-mode").addEventListener("click", function() {
-        document.body.classList.toggle("dark-mode");
-        localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
-      });
-    </script>
-      
-    <!-- Dark mode toggle script -->
-    <script>
-        const toggleDarkMode = () => {
-          const darkMode = localStorage.getItem("darkMode");
-          const lightCSS = document.querySelector("#light-mode-css");
-          const darkCSS = document.querySelector("#dark-mode-css");
-          const body = document.body;
-          if (darkMode === "true") {
-            localStorage.setItem("darkMode", "false");
-            body.classList.remove("dark-mode");
-            lightCSS.disabled = false;
-            darkCSS.disabled = true;
-          } else {
-            localStorage.setItem("darkMode", "true");
-            body.classList.add("dark-mode");
-            lightCSS.disabled = true;
-            darkCSS.disabled = false;
-          }
-        };
-    
-        const toggleDarkModeButton = document.querySelector("#toggle-dark-mode");
-        toggleDarkModeButton.addEventListener("click", toggleDarkMode);
-    </script>
+      -->
 
   </body>
 </html>
