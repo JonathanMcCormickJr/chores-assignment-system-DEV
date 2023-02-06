@@ -17,7 +17,24 @@ def analytics():
 
 @app.route("/survey")
 def survey():
-    return render_template("survey.html")
+    chores = [
+        "Cleaning the kitchen",
+        "Vacuuming or sweeping floors",
+        "Dusting and cleaning surfaces",
+        "Doing laundry",
+        "Cleaning bathrooms",
+        "Taking out the trash and recycling",
+        "Mowing the lawn",
+        "Maintaining the garden",
+        "Grocery shopping",
+        "Cooking and meal preparation",
+        "Cleaning windows and mirrors",
+        "Organizing and decluttering",
+        "Sweeping the porch or walkways",
+        "Cleaning the car(s)",
+        "Pet care"
+    ]
+    return render_template('survey.html', chores=chores)
 
 
 if __name__ == "__main__":
