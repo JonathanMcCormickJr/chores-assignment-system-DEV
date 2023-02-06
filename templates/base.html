@@ -38,6 +38,29 @@
       {% endfor %}
       {% block content %}{% endblock %}
     </div>
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <h6>Links</h6>
+            <ul>
+              <li><a href="{{ url_for('index') }}">Home</a></li>
+              <li><a href="{{ url_for('about') }}">About</a></li>
+              <li><a href="{{ url_for('analytics') }}">Analytics</a></li>
+              <li><a href="{{ url_for('survey') }}">Survey</a></li>
+            </ul>
+          </div>
+          <div class="col-sm">
+            <h6>Follow the project author</h6>
+            <ul>
+              <li><a href="https://github.com/LiberlandHacker">Github</a></li>
+              <li><a href="https://twitter.com/LiberlandHacker">Twitter</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap -->
