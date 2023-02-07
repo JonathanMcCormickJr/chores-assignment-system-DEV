@@ -3,8 +3,7 @@
 }
 
 .float-right {
-    float: right;
+    display: inline-block;
     text-align: right;
-    align-content: right;
 }
 /* FIGURE THIS OUT LATER with float-right */
