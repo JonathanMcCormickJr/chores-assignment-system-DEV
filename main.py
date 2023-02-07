@@ -15,7 +15,7 @@ def get_mode():
         now = datetime.now(new_hampshire_tz)
         current_time_nh = int(now.strftime("%H%M%S"))
         return not 60000 < current_time_nh < 180000  # Use IRL
-        #return 60000 < current_time_nh < 180000  # Use ONLY for testing
+        return 60000 < current_time_nh < 180000  # Use ONLY for testing
 
     if is_nighttime():
         return 'dark'

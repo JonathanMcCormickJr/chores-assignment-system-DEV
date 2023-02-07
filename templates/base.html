@@ -41,17 +41,17 @@
           <a class="nav-item nav-link" href="{{ url_for('analytics') }}">Analytics</a>
           <a class="nav-item nav-link" href="{{ url_for('survey') }}">Survey</a>
         </div>
-        <div class="float-right">
+        
+      </div>
+      <div class="float-right">
           {% if mode == 'dark' %}
-            <!-- Use Dark Mode CSS -->
-            
-            <img class="float-right" src="https://cdn.pixabay.com/photo/2014/04/02/17/07/full-moon-308007_960_720.png" height=40px width=auto alt="🌙"/>
+            <!-- display moon -->
+            <img id="moon" class="float-right" src="https://cdn.pixabay.com/photo/2014/04/02/17/07/full-moon-308007_960_720.png" height=40px width=auto alt="🌙"/>
             {% else %}
-            <!-- Use Light Mode CSS -->
-            <img src="https://cdn.pixabay.com/photo/2014/05/21/11/43/the-sun-349394_960_720.png" height=20px width=auto alt="☀️"/>
+            <!-- display sun -->
+            <img id="sun" src="https://cdn.pixabay.com/photo/2014/05/21/11/43/the-sun-349394_960_720.png" height=40px width=auto alt="☀️"/>
           {% endif %}
             
-        </div>
       </div>
     </nav>
 
@@ -91,6 +91,22 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
+      {% if mode == 'dark' %}
+        <!-- Use Dark Mode JS -->
+        <script>
+          const moon = document.getElementById("moon");
+          moon.addEventListener("click", function () {
+            moon.style.transform = "rotate(360deg)";
+          });
+        </script>
+      {% else %}
+        <!-- Use Light Mode JS -->
+        <script>
+          const sun = document.getElementById("sun");
+          sun.addEventListener("click", function () {
+            sun.style.transform = "rotate(360deg)";
+          });
+        </script>
+      {% endif %}
   </body>
 </html>
