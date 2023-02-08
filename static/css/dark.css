@@ -21,3 +21,12 @@ option:hover {
   background-color: purple;
   color: white;
 }
+
+.talk-bubble {
+    background: #4f4f4f;
+    color: white;
+}
+
+.talk-bubble:after {
+    border-top-color: #4f4f4f;
+}
