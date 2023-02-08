@@ -10,7 +10,7 @@
   <form>
     <div class="form-group">
       <label for="name">Name:</label>
-      <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+      <input type="text" class="form-control" id="name" placeholder="Enter your name" required {% if DEBUG %} value="{{ random_name }}" {% endif %}>
     </div>
     <table class="table">
       <thead>

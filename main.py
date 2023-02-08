@@ -1,9 +1,11 @@
 from flask import Flask, render_template
 from datetime import datetime
 import pytz
+import random
 
 app = Flask(__name__)
 app.debug = True
+
 
 # DARK MODE AUTO-ASSIGN
 
@@ -60,7 +62,16 @@ def survey():
         "Cleaning the car(s)",
         "Pet care"
     ]
-    return render_template('survey.html', mode=mode, chores=chores)
+
+    # Stuff for DEBUGGING
+    def random_name():
+        names = names = ['Emma', 'Olivia', 'Ava', 'Isabella', 'Sophia', 'Mia', 'Charlotte', 'Amelia', 'Harper', 'Evelyn',          'Abigail', 'Emily', 'Elizabeth', 'Avery', 'Sofia', 'Ella', 'Madison', 'Scarlett', 'Victoria', 'Aria',          'Grace', 'Chloe', 'Camila', 'Penelope', 'Riley', 'Nora', 'Lily', 'Eleanor', 'Hazel', 'Aubrey']
+        pick = random.choice(names)
+        return pick
+    if app.debug == True:
+        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug, random_name=random_name())
+    else:
+        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug)
 
 
 if __name__ == "__main__":
