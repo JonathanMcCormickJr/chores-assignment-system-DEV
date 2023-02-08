@@ -65,11 +65,16 @@ def survey():
 
     # Stuff for DEBUGGING
     def random_name():
-        names = names = ['Emma', 'Olivia', 'Ava', 'Isabella', 'Sophia', 'Mia', 'Charlotte', 'Amelia', 'Harper', 'Evelyn',          'Abigail', 'Emily', 'Elizabeth', 'Avery', 'Sofia', 'Ella', 'Madison', 'Scarlett', 'Victoria', 'Aria',          'Grace', 'Chloe', 'Camila', 'Penelope', 'Riley', 'Nora', 'Lily', 'Eleanor', 'Hazel', 'Aubrey']
+        names = names = ['Emma', 'Olivia', 'Ava', 'Isabella', 'Sophia', 'Mia', 'Charlotte', 'Amelia', 'Harper', 'Evelyn', 'Abigail', 'Emily', 'Elizabeth', 'Avery', 'Sofia', 'Ella', 'Madison', 'Scarlett', 'Victoria', 'Aria', 'Grace', 'Chloe', 'Camila', 'Penelope', 'Riley', 'Nora', 'Lily', 'Eleanor', 'Hazel', 'Aubrey']
         pick = random.choice(names)
         return pick
+    def random_importance():
+        options = ['not_important', 'somewhat_important', 'important', 'very_important']
+        pick = random.choice(options)
+        return pick
+    
     if app.debug == True:
-        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug, random_name=random_name())
+        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug, random_name=random_name(), random_importance=random_importance())
     else:
         return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug)
 

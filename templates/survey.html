@@ -26,13 +26,14 @@
         <tr>
           <td>{{ chore }}</td>
           <td>
-            <select class="form-control" required>
-              <option value="" disabled selected hidden> </option>
-              <option value="not_important">Not Important</option>
-              <option value="somewhat_important">Somewhat Important</option>
-              <option value="important">Important</option>
-              <option value="very_important">Very Important</option>
+            <select class="form-control" required {% if DEBUG %} value="{{ random_importance }}" {% endif %}>
+                <option value="" disabled {% if not random_importance %}selected{% endif %} hidden> </option>
+                <option value="not_important" {% if random_importance == "not_important" %}selected{% endif %}>Not Important</option>
+                <option value="somewhat_important" {% if random_importance == "somewhat_important" %}selected{% endif %}>Somewhat Important</option>
+                <option value="important" {% if random_importance == "important" %}selected{% endif %}>Important</option>
+                <option value="very_important" {% if random_importance == "very_important" %}selected{% endif %}>Very Important</option>
             </select>
+
           </td>
           <td>
             <select class="form-control" required>
