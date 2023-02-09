@@ -5,7 +5,7 @@ import random
 
 app = Flask(__name__)
 app.debug = True
-DEBUG_FORM = False
+
 
 # DARK MODE AUTO-ASSIGN
 
@@ -64,19 +64,31 @@ def survey():
     ]
 
     # Stuff for DEBUGGING
+    # NOTE: this stuff should probably be optimized using the DRY principle. 
     def random_name():
         names = names = ['Emma', 'Olivia', 'Ava', 'Isabella', 'Sophia', 'Mia', 'Charlotte', 'Amelia', 'Harper', 'Evelyn', 'Abigail', 'Emily', 'Elizabeth', 'Avery', 'Sofia', 'Ella', 'Madison', 'Scarlett', 'Victoria', 'Aria', 'Grace', 'Chloe', 'Camila', 'Penelope', 'Riley', 'Nora', 'Lily', 'Eleanor', 'Hazel', 'Aubrey']
         pick = random.choice(names)
         return pick
+    
     def random_importance():
         options = ['not_important', 'somewhat_important', 'important', 'very_important']
         pick = random.choice(options)
         return pick
-    
-    if DEBUG_FORM == True:
-        return render_template('survey.html', mode=mode, chores=chores, DEBUG_FORM=DEBUG_FORM, random_name=random_name(), random_importance=random_importance())
+
+    def random_competence():
+        options = ["cant_do_it", "need_help", "can_do_it_easily"]
+        pick = random.choice(options)
+        return pick
+
+    def random_comfort():
+        options = ["hate_it", "dont_like_it", "neutral", "like_it", "love_it"]
+        pick = random.choice(options)
+        return pick
+        
+    if app.debug == True:
+        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug, random_name=random_name(), random_importance=random_importance(), random_competence=random_competence(), random_comfort=random_comfort())
     else:
-        return render_template('survey.html', mode=mode, chores=chores, DEBUG_FORM=DEBUG_FORM)
+        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug)
 
 
 if __name__ == "__main__":
