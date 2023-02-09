@@ -64,29 +64,17 @@ def survey():
     ]
 
     # Stuff for DEBUGGING
-    # NOTE: this stuff should probably be optimized using the DRY principle. 
-    def random_name():
-        names = names = ['Emma', 'Olivia', 'Ava', 'Isabella', 'Sophia', 'Mia', 'Charlotte', 'Amelia', 'Harper', 'Evelyn', 'Abigail', 'Emily', 'Elizabeth', 'Avery', 'Sofia', 'Ella', 'Madison', 'Scarlett', 'Victoria', 'Aria', 'Grace', 'Chloe', 'Camila', 'Penelope', 'Riley', 'Nora', 'Lily', 'Eleanor', 'Hazel', 'Aubrey']
-        pick = random.choice(names)
-        return pick
+    names             = ['Emma', 'Olivia', 'Ava', 'Isabella', 'Sophia', 'Mia', 'Charlotte', 'Amelia', 'Harper', 'Evelyn', 'Abigail', 'Emily', 'Elizabeth', 'Avery', 'Sofia', 'Ella', 'Madison', 'Scarlett', 'Victoria', 'Aria', 'Grace', 'Chloe', 'Camila', 'Penelope', 'Riley', 'Nora', 'Lily', 'Eleanor', 'Hazel', 'Aubrey']
+    importance_levels = ['not_important', 'somewhat_important', 'important', 'very_important']
+    competence_levels = ["cant_do_it", "need_help", "can_do_it_easily"]
+    comfort_levels    = ["hate_it", "dont_like_it", "neutral", "like_it", "love_it"]
+
+    def random_item(list):
+        return random.choice(list)
+
     
-    def random_importance():
-        options = ['not_important', 'somewhat_important', 'important', 'very_important']
-        pick = random.choice(options)
-        return pick
-
-    def random_competence():
-        options = ["cant_do_it", "need_help", "can_do_it_easily"]
-        pick = random.choice(options)
-        return pick
-
-    def random_comfort():
-        options = ["hate_it", "dont_like_it", "neutral", "like_it", "love_it"]
-        pick = random.choice(options)
-        return pick
-        
     if app.debug == True:
-        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug, random_name=random_name(), random_importance=random_importance(), random_competence=random_competence(), random_comfort=random_comfort())
+        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug, random_name=random_item(names), random_importance=random_item(importance_levels), random_competence=random_item(competence_levels), random_comfort=random_item(comfort_levels))
     else:
         return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug)
 
