@@ -69,12 +69,8 @@ def survey():
     competence_levels = ["cant_do_it", "need_help", "can_do_it_easily"]
     comfort_levels    = ["hate_it", "dont_like_it", "neutral", "like_it", "love_it"]
 
-    def random_item(list):
-        return random.choice(list)
-
-    
     if app.debug == True:
-        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug, random_name=random_item(names), random_importance=random_item(importance_levels), random_competence=random_item(competence_levels), random_comfort=random_item(comfort_levels))
+        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug, random_name=random.choice(names), random_importance=random.choice(importance_levels), random_competence=random.choice(competence_levels), random_comfort=random.choice(comfort_levels))
     else:
         return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug)
 
