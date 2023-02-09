@@ -5,7 +5,7 @@ import random
 
 app = Flask(__name__)
 app.debug = True
-
+DEBUG_FORM = False
 
 # DARK MODE AUTO-ASSIGN
 
@@ -73,10 +73,10 @@ def survey():
         pick = random.choice(options)
         return pick
     
-    if app.debug == True:
-        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug, random_name=random_name(), random_importance=random_importance())
+    if DEBUG_FORM == True:
+        return render_template('survey.html', mode=mode, chores=chores, DEBUG_FORM=DEBUG_FORM, random_name=random_name(), random_importance=random_importance())
     else:
-        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug)
+        return render_template('survey.html', mode=mode, chores=chores, DEBUG_FORM=DEBUG_FORM)
 
 
 if __name__ == "__main__":
