@@ -70,9 +70,9 @@ def survey():
     comfort_levels    = ["hate_it", "dont_like_it", "neutral", "like_it", "love_it"]
 
     if app.debug == True:
-        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug, random_name=random.choice(names), random_importance=random.choice(importance_levels), random_competence=random.choice(competence_levels), random_comfort=random.choice(comfort_levels))
+        return render_template('survey.html', mode=mode, chores=chores, DEBUG=app.debug, random_name=random.choice(names), random_importance=random.choice(importance_levels), random_competence=random.choice(competence_levels), random_comfort=random.choice(comfort_levels))
     else:
-        return render_template('survey.html', mode=mode, chores=chores, DEBUG = app.debug)
+        return render_template('survey.html', mode=mode, chores=chores, DEBUG=app.debug)
 
 
 if __name__ == "__main__":
