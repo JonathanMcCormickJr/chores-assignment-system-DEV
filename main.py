@@ -1,7 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from datetime import datetime
 import pytz
 import random
+import csv
 
 app = Flask(__name__)
 app.debug = True
@@ -42,8 +43,40 @@ def analytics():
     mode = get_mode()
     return render_template("analytics.html", mode=mode)
 
-@app.route("/survey")
+@app.route("/survey", methods=['GET', 'POST'])
 def survey():
+    if request.method == "POST":
+        name = request.form['name_input']
+        importance = request.form.getlist('importance_select')
+        competence = request.form.getlist('competence_select')
+        comfort = request.form.getlist('comfort_select')
+        # Your code to process the form data goes here
+        # ...
+        # Write the user's responses to a CSV file
+        with open('data/responses.csv', 'a', newline='') as f:
+            fieldnames = ['name', 'importance', 'competence', 'comfort']
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+    
+            data = {
+                'name': name,
+                'importance': importance,
+                'competence': competence,
+                'comfort': comfort
+            }
+    
+            writer.writerow(data)
+    
+        return 'Thanks for submitting your survey!'
+
+        # Delete this later
+        user_text = request.form["text"]
+
+        with open("text.csv", "a", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow([user_text])
+
+        return "Text saved!"
+        
     mode = get_mode()
     chores = [
         "Cleaning the kitchen",
@@ -68,12 +101,11 @@ def survey():
     importance_levels = ['not_important', 'somewhat_important', 'important', 'very_important']
     competence_levels = ["cant_do_it", "need_help", "can_do_it_easily"]
     comfort_levels    = ["hate_it", "dont_like_it", "neutral", "like_it", "love_it"]
-
+        
     if app.debug == True:
         return render_template('survey.html', mode=mode, chores=chores, DEBUG=app.debug, random_name=random.choice(names), random_importance=random.choice(importance_levels), random_competence=random.choice(competence_levels), random_comfort=random.choice(comfort_levels))
     else:
         return render_template('survey.html', mode=mode, chores=chores, DEBUG=app.debug)
-
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=81)
