@@ -5,7 +5,7 @@ import random
 import csv
 
 app = Flask(__name__)
-app.debug = True
+app.debug = False
 
 
 # DARK MODE AUTO-ASSIGN
@@ -51,7 +51,12 @@ def survey():
         competence = request.form.getlist('competence_select')
         comfort = request.form.getlist('comfort_select')
         # Your code to process the form data goes here
-        # ...
+        # Check if the data already exists in the CSV file
+        with open('data/responses.csv', 'r') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                if row[0] == name:
+                    return 'Name already exists'
         # Write the user's responses to a CSV file
         with open('data/responses.csv', 'a', newline='') as f:
             fieldnames = ['name', 'importance', 'competence', 'comfort']
