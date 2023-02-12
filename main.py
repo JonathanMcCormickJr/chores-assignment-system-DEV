@@ -63,39 +63,40 @@ def survey():
     if request.method == "POST":
         # Handle receiving chores responses
         name = request.form['name_input']
-        importance = request.form.getlist('importance_select')
-        competence = request.form.getlist('competence_select')
-        comfort = request.form.getlist('comfort_select')
+        
         # Your code to process the form data goes here
         # Check if the data already exists in the JSON file
-        with open('data/responses.json') as f:
-            data = json.load(f)
-            for response in data:
-                if response["name"] == name:
-                    return 'Name already exists'
+        try:
+            with open('data/responses.json') as f:
+                data = json.load(f)
+                for response in data:
+                    if response["name"] == name:
+                        return 'Name already exists'
+        except json.JSONDecodeError:
+            return 'Error: could not decode JSON data. Hint: this could be due to the JSON file being empty. Try adding `[]` if so.'
+        
         # Write the user's responses to a JSON file
-        chores_data = {}
+        chore_data = []
         for chore in chores:
-            chore_reactions = "chore:[]"
-            chores_data = chores_data.append(chore_reactions)
+            importance = request.form.get(chore + '_importance_select')
+            competence = request.form.get(chore + '_competence_select')
+            comfort = request.form.get(chore + '_comfort_select')
+        
             
-        new_response = [name, chores_data]
-        
-        data["responses"].append(new_response)
-        
-        with open('data/responses.json', 'w') as f:
-            json.dump(data, f, indent=4)
+            chore_data.append({
+                "name": name,
+                "chore": chore,
+                "importance": importance,
+                "competence": competence,
+                "comfort": comfort
+            })
+            
+            with open('data/responses.json', 'w') as f:
+                json.dump([chore_data], f, indent=4)
+
         
         return 'Thanks for submitting your survey!'
 
-        # Delete this later
-        user_text = request.form["text"]
-
-        with open("text.csv", "a", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow([user_text])
-
-        return "Text saved!"
         
     mode = get_mode()
     
