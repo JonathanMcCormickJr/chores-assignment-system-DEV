@@ -56,7 +56,7 @@ def survey():
         "cooking",
         "mirrors",
         "decluttering",
-        "clening_cars",
+        "cleaning_cars",
         "pets_care"
     ]
     
@@ -70,29 +70,28 @@ def survey():
             with open('data/responses.json') as f:
                 data = json.load(f)
                 for response in data:
-                    if response["name"] == name:
+                    if response[0] == name:
                         return 'Name already exists'
         except json.JSONDecodeError:
-            return 'Error: could not decode JSON data. Hint: this could be due to the JSON file being empty. Try adding `[]` if so.'
+            data = []  # If the JSON file is empty, we must add '[]' to fix the JSONDecodeError
         
         # Write the user's responses to a JSON file
-        chore_data = []
+        chore_data = [name]
         for chore in chores:
             importance = request.form.get(chore + '_importance_select')
             competence = request.form.get(chore + '_competence_select')
             comfort = request.form.get(chore + '_comfort_select')
         
             
-            chore_data.append({
-                "name": name,
-                "chore": chore,
+            chore_data.append([chore, {
                 "importance": importance,
                 "competence": competence,
                 "comfort": comfort
-            })
+            }])
             
-            with open('data/responses.json', 'w') as f:
-                json.dump([chore_data], f, indent=4)
+        data.append(chore_data)
+        with open('data/responses.json', 'w') as f:
+            json.dump(data, f, indent=4)
 
         
         return 'Thanks for submitting your survey!'
