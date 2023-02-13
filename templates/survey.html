@@ -10,7 +10,9 @@
   <form method="post">
     <div class="form-group">
       <label for="name_input">Name:</label>
-      <input type="text" class="form-control" id="name_input" name="name_input" placeholder="Enter your name" required {% if DEBUG %} value="{{ random_name }}" {% endif %}>
+
+      <input type="text" class="form-control" id="name_input" name="name_input" placeholder="Enter your name" required {% if DEBUG %} value="{{ random_name }}"{% endif %} onkeyup="checkName()">
+        <div id="name_status"></div>
     </div>
     <table class="table">
       <thead>
@@ -62,5 +64,32 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+function checkName() {
+  let nameInput = $("#name_input").val();
+  let nameStatus = $("#name_status").html("Name is too short.");
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "/check_name", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function() {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      let response = JSON.parse(this.responseText);
+      if (response.name_exists) {
+        nameStatus.innerHTML = "Name already exists";
+        nameStatus.style.color = "red";
+      } else {
+        nameStatus.innerHTML = "Name is available";
+        nameStatus.style.color = "green";
+      }
+    }
+  };
+  xhr.send(`name_input=${nameInput}`);
+}
+</script>
+
 
 {% endblock %}

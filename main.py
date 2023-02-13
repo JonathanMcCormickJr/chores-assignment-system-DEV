@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, make_response
 from datetime import datetime
 import pytz
 import random
 import json
+import jsonify
 
 app = Flask(__name__)
 app.debug = True
@@ -110,6 +111,19 @@ def survey():
         return render_template('survey.html', mode=mode, chores=chores, DEBUG=app.debug, random_name=random.choice(names), random_importance=random.choice(importance_levels), random_competence=random.choice(competence_levels), random_comfort=random.choice(comfort_levels))
     else:
         return render_template('survey.html', mode=mode, chores=chores, DEBUG=app.debug)
+
+@app.route('/check_name', methods=['POST'])
+def check_name():
+    name = request.form['name_input']
+    # check if the name exists in the database
+    name_exists = False
+    with open('data/responses.json') as f:
+        data = json.load(f)
+        for response in data:
+            if response[0] == name:
+                name_exists = True
+    return jsonify({'name_exists': name_exists})
+    
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=81)
