@@ -44,6 +44,7 @@
         
       </div>
       <div class="float-right">
+          <img id="nh-shape" src="https://cdn.pixabay.com/photo/2012/04/24/12/22/new-39731_960_720.png" height=40px width=auto alt="New Hampshire state seal">
           {% if mode == 'dark' %}
             <!-- display moon -->
             <img id="moon" class="float-right" src="https://cdn.pixabay.com/photo/2014/04/02/17/07/full-moon-308007_960_720.png" height=40px width=auto alt="🌙"/>
@@ -91,6 +92,15 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script>
+            const nh = document.getElementById("nh-shape");
+            nh.addEventListener("click", function () {
+              nh.style.transform = "rotate(360deg)";
+              setTimeout(function() {
+                nh.style.transform = "rotate(0deg)";
+              }, 500);
+            });
+        </script>
         {% if mode == 'dark' %}
           <!-- Use Dark Mode JS -->
           <script>
