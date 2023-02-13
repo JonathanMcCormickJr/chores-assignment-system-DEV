@@ -11,7 +11,6 @@ app.debug = True
 # DARK MODE AUTO-ASSIGN
 
 def get_mode():
-    
 
     def is_nighttime():
         new_hampshire_tz = pytz.timezone('America/New_York')
