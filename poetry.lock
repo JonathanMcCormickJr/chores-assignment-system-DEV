@@ -252,14 +252,6 @@ MarkupSafe = ">=2.0"
 i18n = ["Babel (>=2.7)"]
 
 [[package]]
-name = "jsonify"
-version = "0.5"
-description = "A csv to json converter"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "markupsafe"
 version = "2.1.2"
 description = "Safely add untrusted strings to HTML/XML markup."
@@ -599,7 +591,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10.0,<3.11"
-content-hash = "be8fba3907b6da0a0acfdc9806beda1df657df1e0124cc425d174c83264b1b86"
+content-hash = "fbcbbb745d121dbfc38e61d9b1bfd7caec26c02949b60bfb9cadd16175109249"
 
 [metadata.files]
 aiohttp = []
@@ -623,7 +615,6 @@ iso8601 = []
 itsdangerous = []
 jedi = []
 jinja2 = []
-jsonify = []
 markupsafe = []
 multidict = []
 packaging = []
