@@ -63,16 +63,4 @@
   </form>
 </div>
 
-<script>
-    
-    function validateName() {
-      var name_input = document.getElementById("name_input").value;
-      var used_names = {{ names_in_responses|tojson|safe }};
-      if (used_names.includes(name_input)) {
-        alert("The name you entered matches a name in the list.");
-      }
-    }
-    window.addEventListener("scroll", validateName);
-</script>
-
 {% endblock %}

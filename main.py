@@ -63,7 +63,8 @@ def survey():
     if request.method == "POST":
         # Handle receiving chores responses
         name = request.form['name_input']
-        data = None
+        message = None
+        name_already_exists_message = "<h2>Sorry, that name already exists.</h2><p>Please try again.</p>"
         # Your code to process the form data goes here
         # Check if the data already exists in the JSON file
         try:
@@ -71,7 +72,7 @@ def survey():
                 data = json.load(f)
                 for response in data:
                     if response[0] == name:
-                        return 'Name already exists'
+                        message = name_already_exists_message
         except json.JSONDecodeError:
             data = []  # If the JSON file is empty, we must add '[]' to fix the JSONDecodeError
         
@@ -93,13 +94,15 @@ def survey():
         with open('data/responses.json', 'w') as f:
             json.dump(data, f, indent=4)
 
-        message = "<h1>Thank you!</h1><p><b>Your form has been successfully submitted!</b></p><div>" + str(chore_data) + "</div>"
+        success_message = "<h1>Thank you!</h1><p><b>Your form has been successfully submitted!</b></p><div>" + str(chore_data) + "</div>"
+
+        if message == None:
+            message = success_message
         return render_template('confirmation.html', mode=mode, message=message) # 'Thanks for submitting your survey!'
 
-    with open("data/responses.json") as f:
-        data = json.load(f)
+        
     
-    names_in_responses = str([item[0] for item in data])
+    
 
     # Stuff for DEBUGGING
     names             = ['Emma', 'Olivia', 'Ava', 'Isabella', 'Sophia', 'Mia', 'Charlotte', 'Amelia', 'Harper', 'Evelyn', 'Abigail', 'Emily', 'Elizabeth', 'Avery', 'Sofia', 'Ella', 'Madison', 'Scarlett', 'Victoria', 'Aria', 'Grace', 'Chloe', 'Camila', 'Penelope', 'Riley', 'Nora', 'Lily', 'Eleanor', 'Hazel', 'Aubrey']
@@ -108,9 +111,9 @@ def survey():
     comfort_levels    = ["hate_it", "dont_like_it", "neutral", "like_it", "love_it"]
     # Handle sending chores list 
     if app.debug == True:
-        return render_template('survey.html', mode=mode, names_in_reponses=names_in_responses, chores=chores, DEBUG=app.debug, random_name=random.choice(names), random_importance=random.choice(importance_levels), random_competence=random.choice(competence_levels), random_comfort=random.choice(comfort_levels))
+        return render_template('survey.html', mode=mode, chores=chores, DEBUG=app.debug, random_name=random.choice(names), random_importance=random.choice(importance_levels), random_competence=random.choice(competence_levels), random_comfort=random.choice(comfort_levels))
     else:
-        return render_template('survey.html', mode=mode, names_in_reponses=names_in_responses, chores=chores, DEBUG=app.debug)
+        return render_template('survey.html', mode=mode, chores=chores, DEBUG=app.debug)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=81)
