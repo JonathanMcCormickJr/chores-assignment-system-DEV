@@ -7,7 +7,6 @@ import json
 app = Flask(__name__)
 app.debug = True
 
-
 # DARK MODE AUTO-ASSIGN
 
 def get_mode():
@@ -100,9 +99,6 @@ def survey():
         return render_template('confirmation.html', mode=mode, message=message) # 'Thanks for submitting your survey!'
 
         
-    
-    
-
     # Stuff for DEBUGGING
     names            = ['Aaliyah', 'Abigail', 'Adalena', 'Adalene', 'Adaleta', 'Adalicia', 'Adalina', 'Adaline', 'Adalisse', 'Adalita', 'Adaliz', 'Adalyn', 'Adalynn', 'Ahmed', 'Aiden', 'Alex', 'Alexander', 'Ali', 'Amara', 'Amelia', 'Andrés', 'Angel', 'Annabelle', 'Anthony', 'Aria', 'Arianna', 'Aubrey', 'Audrey', 'Aurora', 'Ava', 'Avery', 'Ayn', 'Baphomet', 'Bella', 'Benjamin', 'Brooklyn', 'Caleb', 'Camila', 'Carlos', 'Carter', 'Charlotte', 'Chloe', 'Daniel', 'David', 'Diego', 'Edward', 'Eleanor', 'Eli', 'Elijah', 'Elizabeth', 'Ella', 'Emily', 'Emma', 'Enrique', 'Ethan', 'Eva', 'Evelyn', 'Everly', 'Fatima', 'Francisco', 'Gael', 'Genesis', 'Grace', 'Grayson', 'Gustavo', 'Hannah', 'Harper', 'Hazel', 'Hector', 'Henry', 'Isaac', 'Isabella', 'Ivan', 'Jack', 'Jackson', 'Jacob', 'Jaime', 'James', 'Javier', 'Jaxon', 'Jayden', 'Jefferson', 'John', 'Jordan', 'Jordanne', 'Jorden', 'Jorge', 'Joseph', 'José', 'Juan', 'Julian', 'Kaylee', 'Khloé', 'Kim', 'Landon', 'Leah', 'Lee', 'Levi', 'Leviathan', 'Lex', 'Liam', 'Lilith', 'Lily', 'Lincoln', 'Logan', 'Lucas', 'Lucifer', 'Luis', 'Luke', 'Luna', 'Léo', 'Madison', 'Makayla', 'Manuel', 'Mason', 'Matthew', 'Mauricio', 'Maya', 'Mia', 'Michael', 'Miguel', 'Mila', 'Miles', 'Muhammad', 'Natalie', 'Noah', 'Nora', 'Oliver', 'Olivia', 'Oscar', 'Owen', 'Penelope', 'Rafael', 'Ricardo', 'Riley', 'Roberto', 'Ruby', 'Samael', 'Samuel', 'Satan', 'Scarlett', 'Sebastian', 'Sofia', 'Sophia', 'Stella', 'Taylor', 'Thomas', 'Victoria', 'Violet', 'Vít', 'Willow', 'Wyatt', 'Yasmin', 'Zoe']
     importance_levels = ['not_important', 'somewhat_important', 'important', 'very_important']
