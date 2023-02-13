@@ -1,100 +1,100 @@
 [
     [
-        "Ella",
+        "Riley",
         [
             "kitchen",
             {
-                "importance": "important",
-                "competence": "cant_do_it",
-                "comfort": "hate_it"
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
             }
         ],
         [
             "sweeping",
             {
-                "importance": "important",
-                "competence": "cant_do_it",
-                "comfort": "hate_it"
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
             }
         ],
         [
             "laundry",
             {
-                "importance": "important",
-                "competence": "cant_do_it",
-                "comfort": "hate_it"
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
             }
         ],
         [
             "bathrooms",
             {
-                "importance": "important",
-                "competence": "cant_do_it",
-                "comfort": "hate_it"
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
             }
         ],
         [
             "trash",
             {
-                "importance": "important",
-                "competence": "cant_do_it",
-                "comfort": "hate_it"
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
             }
         ],
         [
             "mowing",
             {
-                "importance": "important",
-                "competence": "cant_do_it",
-                "comfort": "hate_it"
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
             }
         ],
         [
             "gardening",
             {
-                "importance": "important",
-                "competence": "cant_do_it",
-                "comfort": "hate_it"
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
             }
         ],
         [
             "cooking",
             {
-                "importance": "important",
-                "competence": "cant_do_it",
-                "comfort": "hate_it"
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
             }
         ],
         [
             "mirrors",
             {
-                "importance": "important",
-                "competence": "cant_do_it",
-                "comfort": "hate_it"
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
             }
         ],
         [
             "decluttering",
             {
-                "importance": "important",
-                "competence": "cant_do_it",
-                "comfort": "hate_it"
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
             }
         ],
         [
             "cleaning_cars",
             {
-                "importance": "important",
-                "competence": "cant_do_it",
-                "comfort": "hate_it"
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
             }
         ],
         [
             "pets_care",
             {
-                "importance": "important",
-                "competence": "cant_do_it",
-                "comfort": "hate_it"
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
             }
         ]
     ]

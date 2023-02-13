@@ -59,7 +59,7 @@ def survey():
         "cleaning_cars",
         "pets_care"
     ]
-    
+    mode = get_mode()
     if request.method == "POST":
         # Handle receiving chores responses
         name = request.form['name_input']
@@ -93,11 +93,11 @@ def survey():
         with open('data/responses.json', 'w') as f:
             json.dump(data, f, indent=4)
 
-        
-        return 'Thanks for submitting your survey!'
+        message = "<h1>Thank you!</h1><p><b>Your form has been successfully submitted!</b></p><div>" + str(chore_data) + "</div>"
+        return render_template('confirmation.html', mode=mode, message=message) # 'Thanks for submitting your survey!'
 
         
-    mode = get_mode()
+    
     
 
     # Stuff for DEBUGGING
