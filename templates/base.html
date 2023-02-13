@@ -12,14 +12,55 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 
     <!-- Dark/Ligh mode auto-assign -->
-  {% if mode == 'dark' %}
+
+
     <!-- Use Dark Mode CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dark.css') }}" id="dark-mode-css">
-  {% else %}
+    
     <!-- Use Light Mode CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/light.css') }}" id="light-mode-css">
-  {% endif %}
-
+    
+    <script>
+      function switchMode() {
+        var date = new Date();
+        var hour = date.getHours();
+        var darkModeCss = document.getElementById("dark-mode-css");
+        var lightModeCss = document.getElementById("light-mode-css");
+        var darkMode = false;
+    
+        if (hour >= 8 && hour < 18) {
+          darkModeCss.disabled = true;
+          lightModeCss.disabled = false;
+          darkMode = false;
+        } else {
+          darkModeCss.disabled = false;
+          lightModeCss.disabled = true;
+          darkMode = true;
+        }
+    
+        return darkMode;
+      }
+            
+      var darkMode = switchMode();
+      setInterval(function() {
+        darkMode = switchMode();
+        updateImage(darkMode);
+      }, 1000);
+    
+      function updateImage(darkMode) {
+        var moon = document.getElementById("moon");
+        var sun = document.getElementById("sun");
+    
+        if (darkMode) {
+          moon.style.display = "block";
+          sun.style.display = "none";
+        } else {
+          moon.style.display = "none";
+          sun.style.display = "block";
+        }
+      }
+    </script>
+    
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
@@ -52,13 +93,9 @@
           <b><span id="date" style="color:white">| date |</span></b>
           <br>
         </div>
-          {% if mode == 'dark' %}
-            <!-- display moon -->
-            <img id="moon" class="float-right" src="https://cdn.pixabay.com/photo/2014/04/02/17/07/full-moon-308007_960_720.png" height=75px width=auto alt="🌙"/>
-            {% else %}
-            <!-- display sun -->
-            <img id="sun" src="https://cdn.pixabay.com/photo/2014/05/21/11/43/the-sun-349394_960_720.png" height=75px width=auto alt="☀️"/>
-          {% endif %}
+        
+          <img id="moon" class="float-right" src="https://cdn.pixabay.com/photo/2014/04/02/17/07/full-moon-308007_960_720.png" height="75px" width="auto" alt="🌙" style="display:none;">
+          <img id="sun" src="https://cdn.pixabay.com/photo/2014/05/21/11/43/the-sun-349394_960_720.png" height="75px" width="auto" alt="☀️" style="display:none;">
       </div>
     </nav>
 
