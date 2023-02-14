@@ -92,7 +92,7 @@ def survey():
         with open('data/responses.json', 'w') as f:
             json.dump(data, f, indent=4)
 
-        success_message = "<h1>Thank you!</h1><p><b>Your form has been successfully submitted!</b></p><div>" + str(chore_data) + "</div>"
+        success_message = "<h1>Thank you!</h1><p><b>Your form has been successfully submitted!</b></p><div>" + str(chore_data) + '</div><div><a href="/survey"><button class="btn btn-primary">New survey entry</button></a> <a href="/analytics"><button class="btn btn-primary">View analytics</button></a></div>'
 
         if message == None:
             message = success_message
