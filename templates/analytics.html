@@ -14,9 +14,14 @@
 </div>
 <p>Hmmm, No charts yet....</p>
 <!-- Graphs section -->
-<h2>Graphs</h2>
+<h2>Leaderboard of Persons</h2>
 <div id="graphsContainer"></div>
-<p>Hmmm, No charts yet....</p>
+<ol>
+    {% for person in ranked_persons: %}
+    <li>person</li>
+    {% endfor %}
+</ol>
+
 <!-- Text Summaries section -->
 <h2>Text Summaries</h2>
 <div id="textSummariesContainer"></div>

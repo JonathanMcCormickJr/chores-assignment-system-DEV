@@ -99,11 +99,9 @@ def analytics():
         scores[person] = score
         
     
-    ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+    ranked_persons = sorted(scores.items(), key=lambda x: x[1], reverse=True)
     
-    print(ranked)
-    
-    return render_template("analytics.html", mode=mode)
+    return render_template("analytics.html", mode=mode, ranked_persons=ranked_persons, )
 
 @app.route("/survey", methods=['GET', 'POST'])
 def survey():
