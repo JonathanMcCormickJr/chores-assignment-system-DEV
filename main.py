@@ -44,6 +44,7 @@ def analytics():
         responses = json.load(f)
     
     scores = {}
+    detailed_scores = {}
     for response in responses:
         person = response[0]
         score = 0
@@ -92,13 +93,15 @@ def analytics():
             else:
                 return "error with calculating comfort_score for " + person
                 
-            task_score = (importance_score + competence_score + comfort_score)/(3)  # Divide by number of metrics (1. importance, 2. competence, 3. comfort)
+            task_score = float((importance_score + competence_score + comfort_score)/(3))  # Divide by number of metrics (1. importance, 2. competence, 3. comfort)
             score += task_score
+            detailed_scores[person] = str(task[0]) + ": " + str(task_score)
             
         scores[person] = score
+        
     
     ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
-    print(ranked)
+    print(detailed_scores)
     
     return render_template("analytics.html", mode=mode)
 
