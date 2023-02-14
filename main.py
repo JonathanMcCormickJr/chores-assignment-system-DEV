@@ -95,13 +95,13 @@ def analytics():
                 
             task_score = float((importance_score + competence_score + comfort_score)/(3))  # Divide by number of metrics (1. importance, 2. competence, 3. comfort)
             score += task_score
-            detailed_scores[person] = str(task[0]) + ": " + str(task_score)
             
         scores[person] = score
         
     
     ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
-    print(detailed_scores)
+    
+    print(ranked)
     
     return render_template("analytics.html", mode=mode)
 
