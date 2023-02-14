@@ -39,6 +39,67 @@ def about():
 @app.route("/analytics")
 def analytics():
     mode = get_mode()
+
+    with open('data/responses.json') as f:
+        responses = json.load(f)
+    
+    scores = {}
+    for response in responses:
+        person = response[0]
+        score = 0
+        for task in response[1:]:
+            task_score = 0
+            task_importance = task[1]["importance"]
+            task_competence = task[1]["competence"]
+            task_comfort = task[1]["comfort"]
+            
+            # Determine importance score
+            importance_score = 0
+            if task_importance == "not_important":
+                importance_score = 0
+            elif task_importance == "somewhat_important":
+                importance_score = 1/3
+            elif task_importance == "important":
+                importance_score = 2/3
+            elif task_importance == "very_important":
+                importance_score = 1
+            else: 
+                return "error with calculating importance_score for " + person
+                
+            # Determine competence score "cant_do_it", "need_help", "can_do_it_easily"
+            competence_score = 0
+            if task_competence == "cant_do_it":
+                competence_score = 0
+            elif task_competence == "need_help":
+                competence_score = 0.5
+            elif task_competence == "can_do_it_easily":
+                competence_score = 1
+            else:
+                return "error with calculating competence_score for " + person
+                
+            # Determine comfort score "hate_it", "dont_like_it", "neutral", "like_it", "love_it"
+            comfort_score = 0
+            if task_comfort == "hate_it":
+                comfort_score = 0
+            elif task_comfort == "dont_like_it":
+                comfort_score = 0.25
+            elif task_comfort == "neutral":
+                comfort_score = 0.5
+            elif task_comfort == "like_it":
+                comfort_score = 0.75
+            elif task_comfort == "love_it":
+                comfort_score = 1
+            else:
+                return "error with calculating comfort_score for " + person
+                
+            task_score = (importance_score + competence_score + comfort_score)/(3)  # Divide by number of metrics (1. importance, 2. competence, 3. comfort)
+            score += task_score
+            
+        scores[person] = score
+    
+    ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+    print(ranked)
+    
     return render_template("analytics.html", mode=mode)
 
 @app.route("/survey", methods=['GET', 'POST'])
