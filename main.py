@@ -103,24 +103,14 @@ def analytics():
         
     
     ranked_persons = sorted(scores.items(), key=lambda x: x[1], reverse=True)
-
-
-    def square(x):
-        return x ** 2
-
-    class TestSquare(unittest.TestCase):
-        def test_positive_number(self):
-            self.assertEqual(square(2), 4)
-            
-        def test_negative_number(self):
-            self.assertEqual(square(-2), 4)
-            
-        def test_zero(self):
-            self.assertEqual(square(0), 0)
+    
+    # Create ranked_tasks list
+    ranked_tasks = None
+    
 
                 
     
-    return render_template("analytics.html", mode=mode, ranked_persons=ranked_persons, )
+    return render_template("analytics.html", mode=mode, ranked_persons=ranked_persons, ranked_tasks=ranked_tasks)
 
     
 
