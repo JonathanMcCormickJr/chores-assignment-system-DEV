@@ -5,7 +5,7 @@ import random
 import json
 from collections import defaultdict
 import operator
-
+print("Running main.py")
 
 app = Flask(__name__)
 app.debug = True
@@ -26,6 +26,21 @@ def get_mode():
     else:
         return 'light'
 
+# Variables
+chores = [
+        "kitchen",
+        "sweeping",
+        "laundry",
+        "bathrooms",
+        "trash",
+        "mowing",
+        "gardening",
+        "cooking",
+        "mirrors",
+        "decluttering",
+        "cleaning_cars",
+        "pets_care"
+    ]
 
 # Pages
 
@@ -100,20 +115,7 @@ def analytics():
 
 @app.route("/survey", methods=['GET', 'POST'])
 def survey():
-    chores = [
-        "kitchen",
-        "sweeping",
-        "laundry",
-        "bathrooms",
-        "trash",
-        "mowing",
-        "gardening",
-        "cooking",
-        "mirrors",
-        "decluttering",
-        "cleaning_cars",
-        "pets_care"
-    ]
+    
     mode = get_mode()
     if request.method == "POST":
         # Handle receiving chores responses
@@ -167,3 +169,4 @@ def survey():
     else:
         return render_template('survey.html', mode=mode, chores=chores, DEBUG=app.debug)
 
+print("Ending main.py run")
