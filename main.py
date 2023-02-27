@@ -5,7 +5,7 @@ import random
 import json
 from collections import defaultdict
 import operator
-print("Running main.py")
+
 
 app = Flask(__name__)
 app.debug = True
@@ -26,21 +26,21 @@ def get_mode():
     else:
         return 'light'
 
-# Variables
+# Assign app-wide variables
 chores = [
-        "kitchen",
-        "sweeping",
-        "laundry",
-        "bathrooms",
-        "trash",
-        "mowing",
-        "gardening",
-        "cooking",
-        "mirrors",
-        "decluttering",
-        "cleaning_cars",
-        "pets_care"
-    ]
+    "kitchen",
+    "sweeping",
+    "laundry",
+    "bathrooms",
+    "trash",
+    "mowing",
+    "gardening",
+    "cooking",
+    "mirrors",
+    "decluttering",
+    "cleaning_cars",
+    "pets_care"
+]
 
 # Pages
 
@@ -103,7 +103,7 @@ def analytics():
     
     # Sort task scores in descending order
     ranked_tasks = sorted(task_scores.items(), key=operator.itemgetter(1), reverse=True)
-    print(ranked_tasks)
+    print()
 
     return render_template("analytics.html", mode=mode, ranked_persons=ranked_persons, ranked_tasks=ranked_tasks)
 
@@ -115,7 +115,6 @@ def analytics():
 
 @app.route("/survey", methods=['GET', 'POST'])
 def survey():
-    
     mode = get_mode()
     if request.method == "POST":
         # Handle receiving chores responses
@@ -169,4 +168,5 @@ def survey():
     else:
         return render_template('survey.html', mode=mode, chores=chores, DEBUG=app.debug)
 
-print("Ending main.py run")
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=81)
