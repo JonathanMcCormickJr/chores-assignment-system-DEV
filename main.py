@@ -88,9 +88,13 @@ def analytics():
     
     # Sort task scores in descending order
     ranked_tasks = sorted(task_scores.items(), key=operator.itemgetter(1), reverse=True)
+    print(ranked_tasks)
 
     return render_template("analytics.html", mode=mode, ranked_persons=ranked_persons, ranked_tasks=ranked_tasks)
 
+###########################################################################
+##################### END OF ANALYTICS ####################################
+###########################################################################
 
     
 
