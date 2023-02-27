@@ -3,7 +3,6 @@ from datetime import datetime
 import pytz
 import random
 import json
-import unittest
 
 app = Flask(__name__)
 app.debug = True
@@ -186,6 +185,3 @@ def survey():
     else:
         return render_template('survey.html', mode=mode, chores=chores, DEBUG=app.debug)
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=81)
-    unittest.main()
