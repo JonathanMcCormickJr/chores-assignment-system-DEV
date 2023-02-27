@@ -37,6 +37,8 @@ def about():
     mode = get_mode()
     return render_template("about.html", mode=mode)
 
+
+
 @app.route("/analytics")
 def analytics():
     mode = get_mode()
@@ -93,7 +95,7 @@ def analytics():
                 comfort_score = 1
             else:
                 return "error with calculating comfort_score for " + person
-            print("LIST OF NUMERICAL SCORES:", person, task[0], "Importance:", importance_score, "Competence:", competence_score, "Comfort:", comfort_score)
+            #print("LIST OF NUMERICAL SCORES:", person, task[0], "Importance:", importance_score, "Competence:", competence_score, "Comfort:", comfort_score)
             task_score = float((importance_score + competence_score + comfort_score)/(3))  # Divide by number of metrics (1. importance, 2. competence, 3. comfort)
             score += task_score
             
@@ -103,10 +105,24 @@ def analytics():
     ranked_persons = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 
 
-        
+    def square(x):
+        return x ** 2
+
+    class TestSquare(unittest.TestCase):
+        def test_positive_number(self):
+            self.assertEqual(square(2), 4)
+            
+        def test_negative_number(self):
+            self.assertEqual(square(-2), 4)
+            
+        def test_zero(self):
+            self.assertEqual(square(0), 0)
+
                 
     
     return render_template("analytics.html", mode=mode, ranked_persons=ranked_persons, )
+
+    
 
 @app.route("/survey", methods=['GET', 'POST'])
 def survey():
