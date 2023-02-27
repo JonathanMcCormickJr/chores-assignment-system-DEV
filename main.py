@@ -3,6 +3,7 @@ from datetime import datetime
 import pytz
 import random
 import json
+import unittest
 
 app = Flask(__name__)
 app.debug = True
@@ -66,7 +67,7 @@ def analytics():
                 importance_score = 1
             else: 
                 return "error with calculating importance_score for " + person
-                
+            
             # Determine competence score "cant_do_it", "need_help", "can_do_it_easily"
             competence_score = 0
             if task_competence == "cant_do_it":
@@ -92,7 +93,7 @@ def analytics():
                 comfort_score = 1
             else:
                 return "error with calculating comfort_score for " + person
-                
+            print("LIST OF NUMERICAL SCORES:", person, task[0], "Importance:", importance_score, "Competence:", competence_score, "Comfort:", comfort_score)
             task_score = float((importance_score + competence_score + comfort_score)/(3))  # Divide by number of metrics (1. importance, 2. competence, 3. comfort)
             score += task_score
             
@@ -100,6 +101,10 @@ def analytics():
         
     
     ranked_persons = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+
+
+        
+                
     
     return render_template("analytics.html", mode=mode, ranked_persons=ranked_persons, )
 
@@ -174,3 +179,4 @@ def survey():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=81)
+    unittest.main()
