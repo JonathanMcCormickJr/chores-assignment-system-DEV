@@ -3,6 +3,9 @@ from datetime import datetime
 import pytz
 import random
 import json
+from collections import defaultdict
+import operator
+
 
 app = Flask(__name__)
 app.debug = True
@@ -38,6 +41,16 @@ def about():
 
 
 
+# _______ _       _______ _           ________________________  _______ 
+# (  ___  | (    /(  ___  | \  |\     /\__   __|__   __(  ____ \(  ____ \
+# | (   ) |  \  ( | (   ) | (  ( \   / )  ) (     ) (  | (    \/| (    \/
+# | (___) |   \ | | (___) | |   \ (_) /   | |     | |  | |      | (_____ 
+# |  ___  | (\ \) |  ___  | |    \   /    | |     | |  | |      (_____  )
+# | (   ) | | \   | (   ) | |     ) (     | |     | |  | |            ) |
+# | )   ( | )  \  | )   ( | (____/\ |     | |  ___) (__| (____/\/\____) |
+# |/     \|/    )_)/     \(_______|_/     )_(  \_______(_______/\_______)
+                                                                       
+
 @app.route("/analytics")
 def analytics():
     mode = get_mode()
@@ -45,74 +58,38 @@ def analytics():
     with open('data/responses.json') as f:
         responses = json.load(f)
     
-    scores = {}
-    detailed_scores = {}
+    # Use defaultdict to simplify the process of populating scores dictionary
+    scores = defaultdict(float)
     for response in responses:
         person = response[0]
-        score = 0
         for task in response[1:]:
-            task_score = 0
             task_importance = task[1]["importance"]
             task_competence = task[1]["competence"]
             task_comfort = task[1]["comfort"]
             
-            # Determine importance score
-            importance_score = 0
-            if task_importance == "not_important":
-                importance_score = 0
-            elif task_importance == "somewhat_important":
-                importance_score = 1/3
-            elif task_importance == "important":
-                importance_score = 2/3
-            elif task_importance == "very_important":
-                importance_score = 1
-            else: 
-                return "error with calculating importance_score for " + person
+            # Calculate importance, competence, and comfort scores using a dictionary
+            importance_scores = {"not_important": 0, "somewhat_important": 1/3, "important": 2/3, "very_important": 1}
+            competence_scores = {"cant_do_it": 0, "need_help": 0.5, "can_do_it_easily": 1}
+            comfort_scores = {"hate_it": 0, "dont_like_it": 0.25, "neutral": 0.5, "like_it": 0.75, "love_it": 1}
+            task_score = (importance_scores[task_importance] + competence_scores[task_competence] + comfort_scores[task_comfort]) / 3
+            scores[person] += task_score
             
-            # Determine competence score "cant_do_it", "need_help", "can_do_it_easily"
-            competence_score = 0
-            if task_competence == "cant_do_it":
-                competence_score = 0
-            elif task_competence == "need_help":
-                competence_score = 0.5
-            elif task_competence == "can_do_it_easily":
-                competence_score = 1
-            else:
-                return "error with calculating competence_score for " + person
-                
-            # Determine comfort score "hate_it", "dont_like_it", "neutral", "like_it", "love_it"
-            comfort_score = 0
-            if task_comfort == "hate_it":
-                comfort_score = 0
-            elif task_comfort == "dont_like_it":
-                comfort_score = 0.25
-            elif task_comfort == "neutral":
-                comfort_score = 0.5
-            elif task_comfort == "like_it":
-                comfort_score = 0.75
-            elif task_comfort == "love_it":
-                comfort_score = 1
-            else:
-                return "error with calculating comfort_score for " + person
-            #print("LIST OF NUMERICAL SCORES:", person, task[0], "Importance:", importance_score, "Competence:", competence_score, "Comfort:", comfort_score)
-            task_score = float((importance_score + competence_score + comfort_score)/(3))  # Divide by number of metrics (1. importance, 2. competence, 3. comfort)
-            score += task_score
-            
-        scores[person] = str(round(score, 2))
-        
-    
-    ranked_persons = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+    # Sort scores in descending order
+    ranked_persons = sorted(scores.items(), key=operator.itemgetter(1), reverse=True)
     
     # Create ranked_tasks list
-    ranked_tasks = None
+    # Initialize an empty dictionary to store task scores
+    task_scores = defaultdict(float)
+    for task in chores:
+        # Calculate the average score across all responses for this task
+        task_score = sum(response[1][task]["importance"] + response[1][task]["competence"] + response[1][task]["comfort"] for response in responses) / (3 * len(responses))
+        task_scores[task] = task_score
+    
+    # Sort task scores in descending order
+    ranked_tasks = sorted(task_scores.items(), key=operator.itemgetter(1), reverse=True)
 
-    ranked_tasks = sorted(PLACEHOLDER.PLACEHOLDER(), key=lambda x: x[1], reverse=True)
-    
-    
-
-                
-    
     return render_template("analytics.html", mode=mode, ranked_persons=ranked_persons, ranked_tasks=ranked_tasks)
+
 
     
 
