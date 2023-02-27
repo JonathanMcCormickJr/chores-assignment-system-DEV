@@ -106,6 +106,9 @@ def analytics():
     
     # Create ranked_tasks list
     ranked_tasks = None
+
+    ranked_tasks = sorted(PLACEHOLDER.PLACEHOLDER(), key=lambda x: x[1], reverse=True)
+    
     
 
                 

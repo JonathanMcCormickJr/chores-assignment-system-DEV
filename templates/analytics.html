@@ -10,9 +10,12 @@
 <h2>Chores</h2>
 <b>For each chore, which people are best suited for it?</b>
 <div id="chartsContainer">
-    
+    <ol>
+    {% for task in ranked_tasks: %}
+    <li>{{ task }}</li>
+    {% endfor %}
+</ol>
 </div>
-<p>Hmmm, No charts yet....</p>
 <!-- Graphs section -->
 <h2>Leaderboard of Persons</h2>
 <div id="graphsContainer"></div>
