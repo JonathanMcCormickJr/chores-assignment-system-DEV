@@ -295,5 +295,104 @@
                 "comfort": "hate_it"
             }
         ]
+    ],
+    [
+        "Diego",
+        [
+            "kitchen",
+            {
+                "importance": "somewhat_important",
+                "competence": "cant_do_it",
+                "comfort": "neutral"
+            }
+        ],
+        [
+            "sweeping",
+            {
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "neutral"
+            }
+        ],
+        [
+            "laundry",
+            {
+                "importance": "very_important",
+                "competence": "can_do_it_easily",
+                "comfort": "neutral"
+            }
+        ],
+        [
+            "bathrooms",
+            {
+                "importance": "important",
+                "competence": "cant_do_it",
+                "comfort": "neutral"
+            }
+        ],
+        [
+            "trash",
+            {
+                "importance": "important",
+                "competence": "can_do_it_easily",
+                "comfort": "love_it"
+            }
+        ],
+        [
+            "mowing",
+            {
+                "importance": "important",
+                "competence": "can_do_it_easily",
+                "comfort": "neutral"
+            }
+        ],
+        [
+            "gardening",
+            {
+                "importance": "important",
+                "competence": "can_do_it_easily",
+                "comfort": "neutral"
+            }
+        ],
+        [
+            "cooking",
+            {
+                "importance": "important",
+                "competence": "can_do_it_easily",
+                "comfort": "neutral"
+            }
+        ],
+        [
+            "mirrors",
+            {
+                "importance": "important",
+                "competence": "can_do_it_easily",
+                "comfort": "neutral"
+            }
+        ],
+        [
+            "decluttering",
+            {
+                "importance": "important",
+                "competence": "can_do_it_easily",
+                "comfort": "neutral"
+            }
+        ],
+        [
+            "cleaning_cars",
+            {
+                "importance": "important",
+                "competence": "need_help",
+                "comfort": "neutral"
+            }
+        ],
+        [
+            "pets_care",
+            {
+                "importance": "important",
+                "competence": "can_do_it_easily",
+                "comfort": "neutral"
+            }
+        ]
     ]
 ]
