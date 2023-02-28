@@ -109,7 +109,7 @@ def analytics():
         
         
     
-    sorted_rankings.append(list_of_chores_in_final_data)
+    sorted_rankings = list_of_chores_in_final_data
             
     # Sort task scores in descending order
     ranked_tasks = []
