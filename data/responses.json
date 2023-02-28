@@ -196,5 +196,104 @@
                 "comfort": "neutral"
             }
         ]
+    ],
+    [
+        "Fatima",
+        [
+            "kitchen",
+            {
+                "importance": "not_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
+            }
+        ],
+        [
+            "sweeping",
+            {
+                "importance": "not_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
+            }
+        ],
+        [
+            "laundry",
+            {
+                "importance": "not_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
+            }
+        ],
+        [
+            "bathrooms",
+            {
+                "importance": "not_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
+            }
+        ],
+        [
+            "trash",
+            {
+                "importance": "not_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
+            }
+        ],
+        [
+            "mowing",
+            {
+                "importance": "not_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
+            }
+        ],
+        [
+            "gardening",
+            {
+                "importance": "not_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
+            }
+        ],
+        [
+            "cooking",
+            {
+                "importance": "not_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
+            }
+        ],
+        [
+            "mirrors",
+            {
+                "importance": "important",
+                "competence": "cant_do_it",
+                "comfort": "like_it"
+            }
+        ],
+        [
+            "decluttering",
+            {
+                "importance": "not_important",
+                "competence": "can_do_it_easily",
+                "comfort": "like_it"
+            }
+        ],
+        [
+            "cleaning_cars",
+            {
+                "importance": "not_important",
+                "competence": "can_do_it_easily",
+                "comfort": "neutral"
+            }
+        ],
+        [
+            "pets_care",
+            {
+                "importance": "not_important",
+                "competence": "can_do_it_easily",
+                "comfort": "hate_it"
+            }
+        ]
     ]
 ]

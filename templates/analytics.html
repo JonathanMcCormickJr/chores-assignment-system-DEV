@@ -33,4 +33,11 @@
     <li>{{ task }}</li>
     {% endfor %}
 </ol>
+
+<h2>Task Scores</h2>
+<ul>
+    {% for task_score in task_scores: %}
+    <li>{{ task_score }}</li>
+    {% endfor %}
+</ul>
 {% endblock %}

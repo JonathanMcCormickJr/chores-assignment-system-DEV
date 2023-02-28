@@ -78,6 +78,7 @@ def analytics():
     scores = defaultdict(float)
     persons = []
     tasks = []
+    task_scores = []
     for response in responses:
         person = response[0]
         persons.append(person)
@@ -91,18 +92,15 @@ def analytics():
             competence_scores = {"cant_do_it": 0, "need_help": 0.5, "can_do_it_easily": 1}
             comfort_scores = {"hate_it": 0, "dont_like_it": 0.25, "neutral": 0.5, "like_it": 0.75, "love_it": 1}
             task_score = (importance_scores[task_importance] + competence_scores[task_competence] + comfort_scores[task_comfort]) / 3
-            scores[person] += task_score
+            task_scores.append(task_score)
             
 
     
-    # Create ranked_tasks list
-    # Initialize an empty dictionary to store task scores
-    task_scores = defaultdict(float)
     
             
     # Sort task scores in descending order
     ranked_tasks = []
-    return render_template("analytics.html", mode=mode, ranked_tasks=ranked_tasks, persons=persons, tasks=tasks)
+    return render_template("analytics.html", mode=mode, ranked_tasks=ranked_tasks, persons=persons, tasks=tasks, task_scores=task_scores)
 
 ###########################################################################
 ##################### END OF ANALYTICS ####################################
