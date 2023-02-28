@@ -17,16 +17,20 @@
 </ol>
 </div>
 <!-- Graphs section -->
-<h2>Leaderboard of Persons</h2>
+<h2>Persons</h2>
 <div id="graphsContainer"></div>
 <ol>
-    {% for person in ranked_persons: %}
+    {% for person in persons: %}
     <li>{{ person }}</li>
     {% endfor %}
 </ol>
 
 <!-- Text Summaries section -->
-<h2>Text Summaries</h2>
+<h2>Tasks</h2>
 <div id="textSummariesContainer"></div>
-<p>Hmmm, No charts yet....</p>
+<ol>
+    {% for task in tasks: %}
+    <li>{{ task }}</li>
+    {% endfor %}
+</ol>
 {% endblock %}

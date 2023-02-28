@@ -76,13 +76,16 @@ def analytics():
     
     # Use defaultdict to simplify the process of populating scores dictionary
     scores = defaultdict(float)
+    persons = []
+    tasks = []
     for response in responses:
         person = response[0]
+        persons.append(person)
         for task in response[1:]:
             task_importance = task[1]["importance"]
             task_competence = task[1]["competence"]
             task_comfort = task[1]["comfort"]
-            
+            tasks.append(task)
             # Calculate importance, competence, and comfort scores using a dictionary
             importance_scores = {"not_important": 0, "somewhat_important": 1/3, "important": 2/3, "very_important": 1}
             competence_scores = {"cant_do_it": 0, "need_help": 0.5, "can_do_it_easily": 1}
@@ -90,19 +93,16 @@ def analytics():
             task_score = (importance_scores[task_importance] + competence_scores[task_competence] + comfort_scores[task_comfort]) / 3
             scores[person] += task_score
             
-    # Sort scores in descending order
-    ranked_persons = sorted(scores.items(), key=operator.itemgetter(1), reverse=True)
+
     
     # Create ranked_tasks list
     # Initialize an empty dictionary to store task scores
     task_scores = defaultdict(float)
-    for task in chores:
-        count = 0
-        for i in task:
-            # Calculate the average score across all responses for this task
+    
+            
     # Sort task scores in descending order
-
-    return render_template("analytics.html", mode=mode, ranked_tasks=ranked_tasks)
+    ranked_tasks = []
+    return render_template("analytics.html", mode=mode, ranked_tasks=ranked_tasks, persons=persons, tasks=tasks)
 
 ###########################################################################
 ##################### END OF ANALYTICS ####################################
