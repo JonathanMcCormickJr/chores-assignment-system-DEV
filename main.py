@@ -77,7 +77,7 @@ def analytics():
     persons = []
     tasks = []
     task_scores = []
-    rankings = {}
+    rankings = []
     for response in responses:
         person = response[0]
         
@@ -96,14 +96,24 @@ def analytics():
             
             task_scores.append([person, task_name, task_score])
 
-            person_dict = {person: task_score}
-            rankings[task_name] = person_dict
+            rankings.append([task_name, person, task_score])
+            sorted_rankings = sorted(rankings, key=lambda x: x[0])
+
+    list_of_chores_in_final_data = []
+    for i in sorted_rankings:
+        head_string = f"<h2>{i[0]}</h2>"
+        if head_string not in list_of_chores_in_final_data:
+            list_of_chores_in_final_data.append(head_string)
+
+        list_of_chores_in_final_data.append(f"<p>{i[1:]}</p>")
+        
+        
     
-    
+    sorted_rankings.append(list_of_chores_in_final_data)
             
     # Sort task scores in descending order
     ranked_tasks = []
-    return render_template("analytics.html", mode=mode, ranked_tasks=ranked_tasks, persons=persons, tasks=tasks, task_scores=task_scores, rankings=rankings)
+    return render_template("analytics.html", mode=mode, ranked_tasks=ranked_tasks, persons=persons, tasks=tasks, task_scores=task_scores, sorted_rankings=sorted_rankings)
 
 ###########################################################################
 ##################### END OF ANALYTICS ####################################
