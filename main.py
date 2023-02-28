@@ -3,8 +3,7 @@ from datetime import datetime
 import pytz
 import random
 import json
-from collections import defaultdict
-import operator
+
 
 
 app = Flask(__name__)
@@ -75,17 +74,16 @@ def analytics():
         responses = json.load(f)
     
     # Use defaultdict to simplify the process of populating scores dictionary
-    scores = defaultdict(float)
     persons = []
     tasks = []
     task_scores = []
-    rankings = []
+    rankings = {}
     for response in responses:
         person = response[0]
         
         persons.append(person)
         for task in response[1:]:
-            task_name = task[0]
+            task_name = str(task[0])
             task_importance = task[1]["importance"]
             task_competence = task[1]["competence"]
             task_comfort = task[1]["comfort"]
@@ -98,7 +96,7 @@ def analytics():
             
             task_scores.append([person, task_name, task_score])
 
-            
+            rankings[task_name] = {person: task_score}
     
     
             
