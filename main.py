@@ -96,7 +96,8 @@ def analytics():
             
             task_scores.append([person, task_name, task_score])
 
-            rankings[task_name] = {person: task_score}
+            person_dict = {person: task_score}
+            rankings[task_name] = person_dict
     
     
             
