@@ -100,15 +100,9 @@ def analytics():
         count = 0
         for i in task:
             # Calculate the average score across all responses for this task
-            task_score = sum(response[1][task][count] + response[1][task][count] + response[1][task][count] for response in responses) / (3 * len(responses))
-            task_scores[task] = task_score
-            count += 1
-    
     # Sort task scores in descending order
-    ranked_tasks = sorted(task_scores.items(), key=operator.itemgetter(1), reverse=True)
-    print()
 
-    return render_template("analytics.html", mode=mode, ranked_persons=ranked_persons, ranked_tasks=ranked_tasks)
+    return render_template("analytics.html", mode=mode, ranked_tasks=ranked_tasks)
 
 ###########################################################################
 ##################### END OF ANALYTICS ####################################
