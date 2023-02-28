@@ -79,6 +79,7 @@ def analytics():
     persons = []
     tasks = []
     task_scores = []
+    rankings = []
     for response in responses:
         person = response[0]
         
@@ -95,14 +96,15 @@ def analytics():
             comfort_scores = {"hate_it": 0, "dont_like_it": 0.25, "neutral": 0.5, "like_it": 0.75, "love_it": 1}
             task_score = (importance_scores[task_importance] + competence_scores[task_competence] + comfort_scores[task_comfort]) / len([task_importance, task_competence, task_comfort])
             
-            task_scores.append(f"{person}: {task_name}: {task_score}.")
+            task_scores.append([person, task_name, task_score])
 
+            
     
     
             
     # Sort task scores in descending order
     ranked_tasks = []
-    return render_template("analytics.html", mode=mode, ranked_tasks=ranked_tasks, persons=persons, tasks=tasks, task_scores=task_scores)
+    return render_template("analytics.html", mode=mode, ranked_tasks=ranked_tasks, persons=persons, tasks=tasks, task_scores=task_scores, rankings=rankings)
 
 ###########################################################################
 ##################### END OF ANALYTICS ####################################
