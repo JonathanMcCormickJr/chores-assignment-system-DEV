@@ -38,7 +38,11 @@ chores = [
     "mirrors",
     "decluttering",
     "cleaning_cars",
-    "pets_care"
+    "pets_care",
+    "cupboards",
+    "linen_closets",
+    "coat_closet",
+    "TV/fridge_top"
 ]
 
 # Pages
