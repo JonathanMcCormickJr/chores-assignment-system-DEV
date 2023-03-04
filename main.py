@@ -110,7 +110,14 @@ def analytics():
             final_data += (head_string)
 
         final_data += f"<p>{i[1:]}</p>"
-        # RESUME HERE
+        # RESUME HERE by adding bar chart
+        def horizontal_bar(value):
+            num_visual_units = 60
+            num_chars = int(value * num_visual_units)  # adjust to change the length of the bar
+            bar = '|' + '#' * num_chars + '-' * (num_visual_units - num_chars) + '|'
+            return bar
+        final_data += str(horizontal_bar(.7)) + "\n"
+    
     
     sorted_rankings = final_data
             
