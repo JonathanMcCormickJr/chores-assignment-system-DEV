@@ -109,14 +109,14 @@ def analytics():
         if head_string not in final_data:
             final_data += (head_string)
 
-        final_data += f"<p>{i[1:]}</p>"
+        final_data += f"<p><b>{i[1]}</b>: {i[2]}</p>"
         # RESUME HERE by adding bar chart
         def horizontal_bar(value):
             num_visual_units = 60
             num_chars = int(value * num_visual_units)  # adjust to change the length of the bar
-            bar = '|' + '#' * num_chars + '-' * (num_visual_units - num_chars) + '|'
+            bar = '<pre>|' + '★' * num_chars + '☆' * (num_visual_units - num_chars) + '|</pre>'
             return bar
-        final_data += str(horizontal_bar(.7)) + "\n"
+        final_data += str(horizontal_bar(i[2])) + "\n" + "<hr class='mode'>"
     
     
     sorted_rankings = final_data

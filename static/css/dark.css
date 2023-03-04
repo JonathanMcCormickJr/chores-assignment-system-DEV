@@ -32,3 +32,11 @@ option:hover {
 .talk-bubble:after {
     border-top-color: #4f4f4f;
 }
+
+pre {
+    color: white;
+}
+
+hr.mode {
+    border: 1px solid #575757;
+} 

@@ -13,3 +13,11 @@ body {
 .talk-bubble:after {
     border-top-color: #888888;
 }
+
+pre {
+    color: black;
+}
+
+hr.mode {
+    border: 1px solid #c2c2c2;
+} 
