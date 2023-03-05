@@ -64,15 +64,15 @@ p {
     margin-bottom: -20px;
 }
 
-.red {
+.importance_color {
     color: red;
 }
 
-.blue {
+.competence_color {
     color: blue;
 }
 
-span.yellow {
+.comfort_color {
     color: yellow;
 }
 

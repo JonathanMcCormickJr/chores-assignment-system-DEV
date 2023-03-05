@@ -114,7 +114,7 @@ def analytics():
         if head_string not in final_data:
             final_data += (head_string)
 
-        final_data += f"<h3>{i[1]}</h3><p><b>Overall:</b> {round(i[2],2)}</p><p><b>Importance:</b> {round(i[3],2)};     <b>Competence:</b> {round(i[4],2)};     <b>Comfort:</b> {round(i[5],2)}; </p>"
+        final_data += f"<h3>{i[1]}</h3><p><b>Overall:</b> {round(i[2],2)}</p><p><span class='importance_color'><b>Importance:</b> {round(i[3],2)};</span>     <span class='competence_color'><b>Competence:</b> {round(i[4],2)};</span>     <span class='comfort_color'><b>Comfort:</b> {round(i[5],2)};</span> </p>"
         # RESUME HERE by adding bar chart
         def horizontal_bar(importance, competence, comfort):
             num_visual_units = 60
@@ -122,7 +122,7 @@ def analytics():
             num_chars_competence = int(competence * num_visual_units / 3)
             num_chars_comfort = int(comfort * num_visual_units / 3)
             num_chars_total = num_chars_importance + num_chars_competence + num_chars_comfort
-            bar = f"<pre class='mode'>|<span class='red'>{'★' * num_chars_importance}</span><span class='blue'>{'★' * num_chars_competence}</span><span class='yellow'>{'★' * num_chars_comfort}</span>{'☆' * (num_visual_units - num_chars_total)}|</pre>"
+            bar = f"<pre class='mode'>|<span class='importance_color'>{'★' * num_chars_importance}</span><span class='competence_color'>{'★' * num_chars_competence}</span><span class='comfort_color'>{'★' * num_chars_comfort}</span>{'☆' * (num_visual_units - num_chars_total)}|</pre>"
             return bar
         final_data += str(horizontal_bar(i[3], i[4], i[5])) + "\n" + "<hr class='mode'>"
     
