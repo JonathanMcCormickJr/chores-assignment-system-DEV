@@ -101,7 +101,7 @@ def analytics():
             task_competence_score = competence_scores[task_competence]
             task_comfort_score = comfort_scores[task_comfort]
 
-            task_score = (task_importance_score + task_competence_score + task_comfort_score) / len([task_importance, task_competence, task_comfort])
+            task_score = (task_importance_score + task_competence_score + task_comfort_score) / 3
             
             task_scores.append([person, task_name, task_score, task_importance_score, task_competence_score, task_comfort_score])
 
@@ -116,12 +116,15 @@ def analytics():
 
         final_data += f"<h3>{i[1]}</h3><p>Overall: {i[2]}</p><p>Importance: {i[3]}. Competence: {i[4]}. Comfort: {i[5]}. </p>"
         # RESUME HERE by adding bar chart
-        def horizontal_bar(value):
+        def horizontal_bar(importance, competence, comfort):
             num_visual_units = 60
-            num_chars = int(value * num_visual_units)  # adjust to change the length of the bar
-            bar = f"<pre class='mode'>|<span class='red'>{'★' * num_chars}</span>{'☆' * (num_visual_units - num_chars)}|</pre>"
+            num_chars_importance = int(importance * num_visual_units / 3)
+            num_chars_competence = int(competence * num_visual_units / 3)
+            num_chars_comfort = int(comfort * num_visual_units / 3)
+            num_chars_total = num_chars_importance + num_chars_competence + num_chars_comfort
+            bar = f"<pre class='mode'>|<span class='red'>{'★' * num_chars_importance}</span><span class='blue'>{'★' * num_chars_competence}</span><span class='yellow'>{'★' * num_chars_comfort}</span>{'☆' * (num_visual_units - num_chars_total)}|</pre>"
             return bar
-        final_data += str(horizontal_bar(i[2])) + "\n" + "<hr class='mode'>"
+        final_data += str(horizontal_bar(i[3], i[4], i[5])) + "\n" + "<hr class='mode'>"
     
     
     sorted_rankings = final_data
