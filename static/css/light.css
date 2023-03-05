@@ -14,7 +14,7 @@ body {
     border-top-color: #888888;
 }
 
-pre {
+pre.mode {
     color: black;
 }
 

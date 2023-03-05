@@ -33,7 +33,7 @@ option:hover {
     border-top-color: #4f4f4f;
 }
 
-pre {
+pre.mode {
     color: white;
 }
 

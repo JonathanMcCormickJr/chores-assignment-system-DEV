@@ -114,7 +114,7 @@ def analytics():
         def horizontal_bar(value):
             num_visual_units = 60
             num_chars = int(value * num_visual_units)  # adjust to change the length of the bar
-            bar = '<pre>|' + '★' * num_chars + '☆' * (num_visual_units - num_chars) + '|</pre>'
+            bar = f"<pre class='mode'>|<span class='red'>{'★' * num_chars}</span>{'☆' * (num_visual_units - num_chars)}|</pre>"
             return bar
         final_data += str(horizontal_bar(i[2])) + "\n" + "<hr class='mode'>"
     
