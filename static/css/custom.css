@@ -1,5 +1,9 @@
 /* custom.css */
 
+p {
+    white-space: pre;
+}
+
 .container {
     padding: 20px;
 }

@@ -114,7 +114,7 @@ def analytics():
         if head_string not in final_data:
             final_data += (head_string)
 
-        final_data += f"<h3>{i[1]}</h3><p>Overall: {i[2]}</p><p>Importance: {i[3]}. Competence: {i[4]}. Comfort: {i[5]}. </p>"
+        final_data += f"<h3>{i[1]}</h3><p><b>Overall:</b> {round(i[2],2)}</p><p><b>Importance:</b> {round(i[3],2)};     <b>Competence:</b> {round(i[4],2)};     <b>Comfort:</b> {round(i[5],2)}; </p>"
         # RESUME HERE by adding bar chart
         def horizontal_bar(importance, competence, comfort):
             num_visual_units = 60
