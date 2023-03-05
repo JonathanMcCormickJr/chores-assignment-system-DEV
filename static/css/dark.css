@@ -40,3 +40,15 @@ pre.mode {
 hr.mode {
     border: 1px solid #575757;
 } 
+
+.importance_color {
+    color: #f07575;
+}
+
+.competence_color {
+    color: #8484f5;
+}
+
+.comfort_color {
+    color: #b7b75c;
+}
