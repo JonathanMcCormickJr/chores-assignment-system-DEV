@@ -129,7 +129,7 @@ def analytics():
     
     sorted_rankings = final_data
             
-    return render_template("analytics.html", mode=mode, sorted_rankings=sorted_rankings)
+    return render_template("analytics.html", mode=mode, sorted_rankings=sorted_rankings, tasks=chores, persons=persons)
 
 ###########################################################################
 ##################### END OF ANALYTICS ####################################
