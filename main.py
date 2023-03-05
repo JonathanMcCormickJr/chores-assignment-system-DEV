@@ -153,6 +153,7 @@ def survey():
                 for response in data:
                     if response[0] == name:
                         message = name_already_exists_message
+                        return render_template('confirmation.html', mode=mode, message=message)
         except json.JSONDecodeError:
             data = []  # If the JSON file is empty, we must add '[]' to fix the JSONDecodeError
         
