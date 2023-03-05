@@ -96,11 +96,16 @@ def analytics():
             importance_scores = {"not_important": 0, "somewhat_important": 1/3, "important": 2/3, "very_important": 1}
             competence_scores = {"cant_do_it": 0, "need_help": 0.5, "can_do_it_easily": 1}
             comfort_scores = {"hate_it": 0, "dont_like_it": 0.25, "neutral": 0.5, "like_it": 0.75, "love_it": 1}
-            task_score = (importance_scores[task_importance] + competence_scores[task_competence] + comfort_scores[task_comfort]) / len([task_importance, task_competence, task_comfort])
             
-            task_scores.append([person, task_name, task_score])
+            task_importance_score = importance_scores[task_importance]
+            task_competence_score = competence_scores[task_competence]
+            task_comfort_score = comfort_scores[task_comfort]
 
-            rankings.append([task_name, person, task_score])
+            task_score = (task_importance_score + task_competence_score + task_comfort_score) / len([task_importance, task_competence, task_comfort])
+            
+            task_scores.append([person, task_name, task_score, task_importance_score, task_competence_score, task_comfort_score])
+
+            rankings.append([task_name, person, task_score, task_importance_score, task_competence_score, task_comfort_score])
             sorted_rankings = sorted(rankings, key=lambda x: x[0])
 
     final_data = ""
@@ -109,7 +114,7 @@ def analytics():
         if head_string not in final_data:
             final_data += (head_string)
 
-        final_data += f"<p><b>{i[1]}</b>: {i[2]}</p>"
+        final_data += f"<h3>{i[1]}</h3><p>Overall: {i[2]}</p><p>Importance: {i[3]}. Competence: {i[4]}. Comfort: {i[5]}. </p>"
         # RESUME HERE by adding bar chart
         def horizontal_bar(value):
             num_visual_units = 60
