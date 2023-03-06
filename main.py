@@ -7,7 +7,7 @@ import json
 
 
 app = Flask(__name__)
-app.debug = True
+app.debug = False
 
 # DARK MODE AUTO-ASSIGN
 
@@ -27,22 +27,9 @@ def get_mode():
 
 # Assign app-wide variables
 chores = [
-    "kitchen",
-    "sweeping",
-    "laundry",
-    "bathrooms",
-    "trash",
-    "mowing",
-    "gardening",
-    "cooking",
-    "mirrors",
-    "decluttering",
-    "cleaning_cars",
-    "pets_care",
-    "cupboards",
-    "linen_closets",
-    "coat_closet",
-    "TV/fridge_top"
+    "Clean the Kitchen",
+    "Sweep the Floors",
+    "Do the Laundry"
 ]
 
 # Pages
