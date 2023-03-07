@@ -1,6 +1,6 @@
 /* custom.css */
 
-p {
+.pre {
     white-space: pre;
 }
 
@@ -48,6 +48,7 @@ p {
     padding: 0.5em;
     border-radius: 0.5em;
     box-shadow: 2px 2px 2px 0 #888888;
+    word-wrap: break-word;
 }
 
 .talk-bubble:after {
