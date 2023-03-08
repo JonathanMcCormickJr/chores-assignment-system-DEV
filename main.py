@@ -7,7 +7,7 @@ import json
 
 
 app = Flask(__name__)
-app.debug = False
+app.debug = True
 
 # DARK MODE AUTO-ASSIGN
 
@@ -61,8 +61,11 @@ def about():
 def analytics():
     mode = get_mode()
 
-    with open('data/responses.json') as f:
-        responses = json.load(f)
+    try:
+        with open('data/responses.json') as f:
+            responses = json.load(f)
+    except:
+        return render_template("analytics.html", mode=mode, sorted_rankings="<code>Internal error: No data could be retrieved.</code><p>In order to fix this, you can be the first to </p><a href='/survey'><button class='btn btn-primary'>Take the survey</button></a>", tasks=["<code>Internal error</code>"], persons=["<code>Internal error</code>"])
     
     # Use defaultdict to simplify the process of populating scores dictionary
     persons = []
