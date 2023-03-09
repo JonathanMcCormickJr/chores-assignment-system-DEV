@@ -7,7 +7,7 @@ import json
 
 
 app = Flask(__name__)
-app.debug = False
+app.debug = True
 
 # DARK MODE AUTO-ASSIGN
 
